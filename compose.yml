@@ -1,0 +1,12 @@
+services:
+  serve:
+    image: docker.io/library/busybox:latest
+    restart: unless-stopped
+    volumes:
+      - ./www:/www:ro
+      # - ./httpd.conf:/etc/httpd.conf:ro
+    ports:
+      - 80:80
+    command: httpd -f -v -h /www
+    healthcheck:
+      test: wget --spider http://localhost
