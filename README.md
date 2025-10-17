@@ -21,7 +21,9 @@ services:
       # - ./httpd.conf:/etc/httpd.conf:ro
     ports:
       - 80:80
-    command: httpd -f -v -h /www
+    command: httpd -f -vv -h /www
     healthcheck:
-      test: wget --spider http://localhost
+      interval: 30s
+      start_period: 5s
+      test: wget --spider http://localhost || exit 1
 ```
