@@ -22,6 +22,7 @@ services:
     ports:
       - 80:80
     command: httpd -f -vv -h /www
+    init: true
     healthcheck:
       interval: 30s
       start_period: 5s
